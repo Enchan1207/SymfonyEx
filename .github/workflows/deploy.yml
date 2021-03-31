@@ -66,5 +66,5 @@ jobs:
       run: |
         cd ../
         sftp r-techlab@r-techlab.sakura.ne.jp:/home/r-techlab/symfony <<< $'put SymfonyEx.tgz'
-
+        ssh r-techlab@r-techlab.sakura.ne.jp "cd ~/symfony; ls"
 
