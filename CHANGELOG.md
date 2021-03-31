@@ -23,3 +23,7 @@
  - scssのビルド(参考: [公式](https://symfony.com/doc/current/the-fast-track/en/22-encore.html#leveraging-bootstrap))
  - ビルドファイル出力先変更 ([webpack.config.js](webpack.config.js#L13-L15) 参考: [GitHub](https://github.com/symfony/webpack-encore/issues/580))
 
+## [Update] separate css, modify scripts
+
+ - scssファイルを変数定義とスタイル定義に分割、`app.scss`で統括的に読み込むよう変更
+ - Stimulus系ファイル及び`app.js`での参照を削除、`scripts/`でVanillaJSを記述しimportするように

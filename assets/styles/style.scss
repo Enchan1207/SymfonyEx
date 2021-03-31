@@ -1,0 +1,15 @@
+//
+// style.scss
+//
+
+#main-navigation {
+    .breadcrumb {
+        overflow-x: auto;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+
+        .breadcrumb-item {
+            padding: 0 0.5rem;
+        }
+    }
+}

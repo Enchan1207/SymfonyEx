@@ -1,23 +1,7 @@
 //
-// カスタムscss
+// app.scss
 //
 
-$body-bg: #111;
-$body-color: #eee;
-
-$theme-colors: (
-    "background": #333,
-    "primary": #1a1,
-);
-
+@import 'variables';
 @import '~bootstrap/scss/bootstrap';
-
-.breadcrumb{
-    overflow-x: auto;
-    white-space: nowrap;
-    flex-wrap: nowrap;
-
-    .breadcrumb-item{
-        padding: 0 0.5rem;
-    }
-}
+@import 'style';
