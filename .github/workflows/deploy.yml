@@ -30,7 +30,8 @@ jobs:
     - name: Prepare (composer, yarn -> compress)
       run: |
         composer update
-        yarn encore dev
+        yarn install
+        yarn encore prod
         cd ../
         tar -czvf SymfonyEx.tgz SymfonyEx/
 
