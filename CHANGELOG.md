@@ -27,3 +27,7 @@
 
  - scssファイルを変数定義とスタイル定義に分割、`app.scss`で統括的に読み込むよう変更
  - Stimulus系ファイル及び`app.js`での参照を削除、`scripts/`でVanillaJSを記述しimportするように
+
+## [Add] Workflows
+
+ - GitHub Actionsのワークフローファイルを追加

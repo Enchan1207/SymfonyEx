@@ -1,0 +1,31 @@
+# CI/CD Workflow
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+    # Checkout repository
+    - uses: actions/checkout@v2
+
+    # prepare node.js 
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    # install SSH Key to VM
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v1
+      with:
+        key: ${{ secrets.SSH_KEY }}
+        name: id_rsa
+        known_hosts: ${{ secrets.KNOWN_HOSTS }}
+    
+    # Deploy!
+    - name: run deploy script
+      run: bash deploy.sh
