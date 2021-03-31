@@ -10,25 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    # checkout repository
+    # Checkout repository
     - uses: actions/checkout@v2
 
-    # prepare node.js 
+    # Setup node.js 
     - uses: actions/setup-node@v2
       with:
         node-version: '14'
 
-    # install SSH key to VM
+    # Setup PHP
+    - name: Setup PHP with composer v2
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        tools: composer:v2
+
+    # Install SSH key to VM
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v1
       with:
         private-key: ${{ secrets.SSH_KEY }}
         name: id_rsa
         known-hosts: ${{ secrets.KNOWN_HOSTS }}
-
-    # Validate
-    - name: Validate composer.json and composer.lock
-      run: composer validate
 
     # Cache
     - name: Cache Composer packages
@@ -48,6 +51,9 @@ jobs:
         yarn install
         yarn encore prod
 
-    # deploy
+    # Deploy
     - name: Prepare (composer, yarn -> compress -> SFTP)
-      run: bash deploy.sh
+      run: |
+        cd ../
+        tar czf - SymfonyEx | ssh r-techlab@r-techlab.sakura.ne.jp 'tar zxvf - -C /home/r-techlab/symfony'
+
