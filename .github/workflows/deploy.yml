@@ -27,19 +27,16 @@ jobs:
         known-hosts: ${{ secrets.KNOWN_HOSTS }}
     
     # prepare to deploy
-    - name: Prepare (composer, yarn -> compress)
+    - name: Prepare (composer, yarn)
       run: |
         composer update
         yarn install
         yarn encore prod
-        cd ../
-        tar -czvf SymfonyEx.tgz SymfonyEx/
-        mv SymfonyEx.tgz SymfonyEx/
 
     # save to artifact
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
         name: Compressed repository
-        path: SymfonyEx.tgz
+        path: .
           
