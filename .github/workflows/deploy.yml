@@ -65,12 +65,7 @@ jobs:
     - name: Deploy using SFTP
       run: |
         cd ../
-        ssh r-techlab@r-techlab.sakura.ne.jp "cd symfony;ls"
-        ssh r-techlab@r-techlab.sakura.ne.jp "ls"
-        ssh-keyscan -H r-techlab.sakura.ne.jp >> ~/.ssh/known_hosts
-        ssh r-techlab@r-techlab.sakura.ne.jp "ls"
-        ssh r-techlab@r-techlab.sakura.ne.jp "ls www/Enchan"
-        ssh r-techlab@r-techlab.sakura.ne.jp "pwd"
-        echo "Is it iiiiiiiiiiiinfinityyyyyyyyyyyyyy loooooooooooop!!?!??!?!!?!??!?!!!??!!??!?!?!?!?!!?!?"
+        sftp r-techlab@r-techlab.sakura.ne.jp:/home/r-techlab/symfony <<< $'put SymfonyEx.tgz'
+        ssh r-techlab@r-techlab.sakura.ne.jp "cd symfony; tar -xvf SymfonyEx.tgz"
 
 
