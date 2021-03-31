@@ -31,3 +31,8 @@
 ## [Add] Workflows
 
  - GitHub Actionsのワークフローファイルを追加
+
+## [Update] stylesheets, separated templates
+
+ - `index.html.twig`からヘッダ部をぬきだし、`header.html.twig`に移動
+ - scss更新

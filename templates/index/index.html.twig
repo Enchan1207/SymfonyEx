@@ -3,9 +3,12 @@
 {% block title %}Hello, Bootstrap!{% endblock %}
 
 {% block body %}
-<div class="container my-2 p-3 bg-background">
-    <h1>Hello, Bootstrap! <span class="badge badge-secondary">v4.3.1</span> </h1>
 
+{# ヘッダ読み込み #}
+{% include 'header.html.twig' %}
+
+{# メインコンテンツ #}
+<div class="container my-2 p-3 bg-background">
     <!-- bread-crum -->
     <nav id="main-navigation">
         <ol class="breadcrumb">

@@ -2,6 +2,11 @@
 // style.scss
 //
 
+header{
+    position: sticky;
+    top: 0;
+}
+
 #main-navigation {
     .breadcrumb {
         overflow-x: auto;
