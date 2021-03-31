@@ -25,7 +25,29 @@ jobs:
         private-key: ${{ secrets.SSH_KEY }}
         name: id_rsa
         known-hosts: ${{ secrets.KNOWN_HOSTS }}
-    
+
+    # Validate
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    # Cache
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v2
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    # Resolve Dependencies
+    - name: Install dependencies
+      if: steps.composer-cache.outputs.cache-hit != 'true'
+      run: |
+        composer update --prefer-dist --no-progress --no-suggest
+        yarn install
+        yarn encore prod
+
     # deploy
     - name: Prepare (composer, yarn -> compress -> SFTP)
       run: bash deploy.sh
