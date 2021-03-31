@@ -34,12 +34,12 @@ jobs:
         yarn encore prod
         cd ../
         tar -czvf SymfonyEx.tgz SymfonyEx/
+        mv SymfonyEx.tgz SymfonyEx/
 
     # save to artifact
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: dist-without-markdown
-        path: |
-          ../SymfonyEx.tgz
+        name: Compressed repository
+        path: SymfonyEx.tgz
           
