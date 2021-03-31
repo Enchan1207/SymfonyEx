@@ -28,10 +28,4 @@ jobs:
     
     # deploy
     - name: Prepare (composer, yarn -> compress -> SFTP)
-      run: |
-        composer update
-        yarn install
-        yarn encore prod
-        cd ../
-        tar czf - SymfonyEx | ssh r-techlab@r-techlab.sakura.ne.jp 'tar zxvf - -C /home/r-techlab/symfony'
-
+      run: bash deploy.sh
