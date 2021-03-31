@@ -14,3 +14,12 @@
 ## [Update] add IndexController
 
  - `IndexController`作成(`console make:controller`)
+
+## [Update] add Bootstrap
+
+ - Encoreインストール(参考: [公式](https://symfony.com/doc/current/frontend/encore/installation.html))
+    - `assets`生成、`assets/styles/*.scss`にscss記述 `app.js`に読み込むファイルを指定
+ - Bootstrapインポート(参考: [公式](https://symfony.com/doc/current/frontend/encore/bootstrap.html))
+ - scssのビルド(参考: [公式](https://symfony.com/doc/current/the-fast-track/en/22-encore.html#leveraging-bootstrap))
+ - ビルドファイル出力先変更 ([webpack.config.js](webpack.config.js#L13-L15) 参考: [GitHub](https://github.com/symfony/webpack-encore/issues/580))
+
