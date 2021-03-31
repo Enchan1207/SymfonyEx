@@ -1,6 +1,14 @@
 # Deploy scripts
 
 # ちょっとどういう挙動になるか分からないのでテスト…
-pwd
+echo "pwd::"
+pwd # ~/work/SymfonyEx/SymfonyEx リポジトリ名のあとのサブディレクトリはなんや
+
+echo "ls -la::"
+ls -la
+
+echo "ls -la ../"
 ls ../
-ls /
+
+echo "ls -la ../../"
+ls ../../
