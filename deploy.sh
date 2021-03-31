@@ -1,14 +1,12 @@
 # Deploy scripts
 
-# ちょっとどういう挙動になるか分からないのでテスト…
-echo "pwd::"
-pwd # ~/work/SymfonyEx/SymfonyEx リポジトリ名のあとのサブディレクトリはなんや
+# resolve dependencies
+composer install
+yarn encore dev
 
-echo "ls -la::"
-ls -la
+# compression
+cd ../
+tar -czvf SymfonyEx.tgz SymfonyEx/
 
-echo "ls -la ../"
-ls ../
-
-echo "ls -la ../../"
-ls ../../
+# SFTP!
+sftp r-techlab@r-techlab.sakura.ne.jp:/home/r-techlab/symfony/ <<< $'put {local_file_path}'
