@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    # Checkout repository
+    # checkout repository
     - uses: actions/checkout@v2
 
     # prepare node.js 
@@ -18,7 +18,7 @@ jobs:
       with:
         node-version: '14'
 
-    # install SSH Key to VM
+    # install SSH key to VM
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v1
       with:
@@ -26,20 +26,12 @@ jobs:
         name: id_rsa
         known-hosts: ${{ secrets.KNOWN_HOSTS }}
     
-    # prepare to deploy
-    - name: Prepare (composer, yarn -> compress)
+    # deploy
+    - name: Prepare (composer, yarn -> compress -> SFTP)
       run: |
         composer update
         yarn install
         yarn encore prod
         cd ../
-        tar -czvf SymfonyEx.tgz SymfonyEx/
-        mv SymfonyEx.tgz SymfonyEx/
+        tar czf - SymfonyEx | ssh r-techlab@r-techlab.sakura.ne.jp 'tar zxvf - -C /home/r-techlab/symfony'
 
-    # save to artifact
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: Compressed repository
-        path: SymfonyEx.tgz
-          
