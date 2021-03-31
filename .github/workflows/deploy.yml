@@ -26,6 +26,19 @@ jobs:
         name: id_rsa
         known-hosts: ${{ secrets.KNOWN_HOSTS }}
     
-    # Deploy!
-    - name: run deploy script
-      run: bash deploy.sh
+    # prepare to deploy
+    - name: Prepare (composer, yarn -> compress)
+      run: |
+        composer update
+        yarn encore dev
+        cd ../
+        tar -czvf SymfonyEx.tgz SymfonyEx/
+
+    # save to artifact
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: dist-without-markdown
+        path: |
+          ../SymfonyEx.tgz
+          
