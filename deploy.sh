@@ -8,6 +8,9 @@ composer update
 yarn install
 yarn encore prod
 
+ls ~/.ssh
+cat ~/.ssh/Config
+
 # Compress and transfer using SFTP
 echo "Transfer..."
 cd ../
