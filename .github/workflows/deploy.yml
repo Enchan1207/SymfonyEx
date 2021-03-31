@@ -65,6 +65,7 @@ jobs:
     - name: Deploy using SFTP
       run: |
         cd ../
+        cat ~/.ssh/known_hosts
         sftp r-techlab@r-techlab.sakura.ne.jp:/home/r-techlab/symfony <<< $'put SymfonyEx.tgz'
         ssh -i ~/.ssh/id_rsa -o UserKnownHostsFile=~/.ssh/known_hosts r-techlab@r-techlab.sakura.ne.jp "cd /home/r-techlab/symfony; tar -xzvf SymfonyEx.tgz; rm SymfonyEx.tgz"
 
