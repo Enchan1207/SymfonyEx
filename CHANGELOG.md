@@ -45,3 +45,9 @@
 ## [Update] TODO-list frame
 
  - TODOリストでも作ります?(雑ノリ) という思想のもとtwig, scssを更新
+
+## [Add] Entities
+
+ - `TaskList`,`Task`エンティティを追加
+ - マイグレーションファイル生成 (`console m:mig`, `console d:m:m`)
+
