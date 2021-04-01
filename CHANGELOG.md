@@ -51,3 +51,7 @@
  - `TaskList`,`Task`エンティティを追加
  - マイグレーションファイル生成 (`console m:mig`, `console d:m:m`)
 
+## [Delete] controllers.json
+
+ - `controller.json`削除
+ - `webpack.config.js`の設定を(Stimulusを使用しないように)変更
