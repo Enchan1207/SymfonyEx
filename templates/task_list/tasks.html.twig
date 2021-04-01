@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bootstrap TODO{% endblock %}
+
+{% block body %}
+
+{% include 'task_list/header.html.twig' %}
+
+<div class="container my-2 p-3 bg-container">
+    <div id="list-header" class="row my-1 px-3 py-2">
+        <div class="col-10">
+            <h2>List: {{ list.name }}</h2>
+        </div>
+    </div>
+
+    <div id="row-todolist" class="row my-1 px-4 py-2">
+        <div class="col-12">
+            <div class="list-group">
+            {{ list }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

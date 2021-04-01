@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bootstrap TODO{% endblock %}
+
+{% block stylesheets %}
+{{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+{% block javascripts %}
+{{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+{% block body %}
+
+{% include 'task_list/header.html.twig' %}
+
+{# main contents #}
+<div class="container my-2 p-3 bg-container">
+    <div id="list-header" class="row my-1 px-3 py-2">
+        <div class="col-10">
+            <h2>TODO lists</h2>
+        </div>
+        <div id="col-add" class="col-2">
+            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-addnew">
+                Add
+            </button>
+        </div>
+    </div>
+
+    <div id="row-todolist" class="row my-1 px-4 py-2">
+        <div class="col-12">
+            <div class="list-group">
+                {% for list in lists %}
+                <a href="/list/{{ list.id }}" class="list-group-item list-group-item-action">
+                    {{ list.name }}
+                    <span class="badge badge-primary badge-pill">{{ list.count }}</span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{# modal #}
+<div id="modal-addnew" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Add new TODO-list
+                </h5>
+                <button class="close" type="button" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- form -->
+                <form id="addform">
+                    <!-- list name -->
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                name
+                            </span>
+                            <input type="text" class="form-control" placeholder="Tasks">
+                        </div>
+                    </div>
+                    
+                    <input type="text" name="dummy" style="display:none;">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                    Close
+                </button>
+                <button id="btn-addnew" class="btn btn-primary" type="button">
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

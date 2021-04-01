@@ -8,6 +8,9 @@ $body-color: #eee;
 $theme-colors: (
     "container": #222,
     "primary": #1a1,
+
+    "index": #1A1,
+    "task_list": #EC2,
 );
 
 $list-group-bg: lighten(map-get($theme-colors, container), 10%);
@@ -18,3 +21,6 @@ $list-group-border-width: 1px;
 $list-group-action-color: $body-color;
 $list-group-hover-bg: lighten($list-group-bg, 10%);
 $list-group-action-active-bg: lighten($list-group-bg, 20%);
+
+$modal-content-color: $body-color;
+$modal-content-bg: lighten($body-bg, 30%);
