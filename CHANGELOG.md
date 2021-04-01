@@ -36,3 +36,8 @@
 
  - `index.html.twig`からヘッダ部をぬきだし、`header.html.twig`に移動
  - scss更新
+
+## [Update] CI
+
+ - `.github/workflows/deploy.yml`にCI/CDを記述、サーバにデプロイできるように
+ - `README.md`にステータスバッジを表示

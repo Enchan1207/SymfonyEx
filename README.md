@@ -1,5 +1,7 @@
 # SymfonyEx
 
+[![Deploy](https://github.com/Enchan1207/SymfonyEx/actions/workflows/deploy.yml/badge.svg)](https://github.com/Enchan1207/SymfonyEx/actions)  
+
 ## Overview
 
 The repository for learning [Symfony](https://symfony.com).
