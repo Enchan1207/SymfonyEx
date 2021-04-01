@@ -2,9 +2,38 @@
 // style.scss
 //
 
-header{
+header {
     position: sticky;
     top: 0;
+
+    border-top: 5px map-get($theme-colors, primary) solid;
+
+    a {
+        text-decoration: none;
+        color: $body-color;
+    }
+    a:hover {
+        text-decoration: none;
+        color: $body-color;
+    }
+    a:visited {
+        color: $body-color;
+    }
+
+    h1 {
+        margin: 0;
+        padding: 0;
+    }
+
+    #col-signin {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .btn {
+            border-radius: 2px;
+        }
+    }
 }
 
 #main-navigation {
@@ -17,4 +46,9 @@ header{
             padding: 0 0.5rem;
         }
     }
+}
+
+#row-todolist .list-group-item{
+    -webkit-user-select: none;
+    user-select: none;
 }

@@ -1,63 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello, Bootstrap!{% endblock %}
+{% block title %}Bootstrap TODO{% endblock %}
 
 {% block body %}
 
-{# ヘッダ読み込み #}
 {% include 'header.html.twig' %}
 
-{# メインコンテンツ #}
-<div class="container my-2 p-3 bg-background">
-    <!-- bread-crum -->
-    <nav id="main-navigation">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#">Home</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="#">ここのアイテム自分で書いてかなきゃいけないの地味に面倒</a>
-            </li>
-            <li class="breadcrumb-item active">
-                BootstrapEx
-            </li>
-        </ol>
-    </nav>
-
-    <!-- general html elements -->
-    <h2>What's Bootstrap?</h2>
-    <p>
-        <a href="https://getbootstrap.jp/" class="alert-link">Bootstrap</a>, the world’s most popular front-end open
-        source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components,
-        and powerful JavaScript plugins.
-    </p>
-
-    <!-- alert -->
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        Alerrrrrrrrrt
-        <!-- close button -->
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+<div class="container my-2 p-3 bg-container">
+    <div class="row my-1 px-3 py-2">
+        <h2>TODO lists</h2>
     </div>
 
-    <!-- badge with button -->
-    <button class="btn btn-primary">
-        Notifications
-        <span class="badge badge-light">999+</span>
-    </button>
-
-    <!-- button group -->
-    <div class="btn-group">
-        <button class="btn btn-primary" type="button">
-            1
-        </button>
-        <button class="btn btn-primary" type="button">
-            2
-        </button>
-        <button class="btn btn-primary" type="button">
-            3
-        </button>
+    <div id="row-todolist" class="row my-1 px-4 py-2">
+        <div class="col-12">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                    Tasks
+                    <span class="badge badge-primary badge-pill">
+                        10
+                    </span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    Homeworks
+                    <span class="badge badge-primary badge-pill">
+                        4
+                    </span>
+                </a>
+            </div>
+        </div>
     </div>
 
+
+</div>
 {% endblock %}

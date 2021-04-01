@@ -41,3 +41,7 @@
 
  - `.github/workflows/deploy.yml`にCI/CDを記述、サーバにデプロイできるように
  - `README.md`にステータスバッジを表示
+
+## [Update] TODO-list frame
+
+ - TODOリストでも作ります?(雑ノリ) という思想のもとtwig, scssを更新
