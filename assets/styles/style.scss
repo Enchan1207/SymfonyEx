@@ -2,9 +2,44 @@
 // style.scss
 //
 
-header{
+header#task_list{
+    border-top: 5px map-get($theme-colors, task_list) solid;
+}
+header#index{
+    border-top: 5px map-get($theme-colors, index) solid;
+}
+header {
     position: sticky;
     top: 0;
+
+    border-top: 5px map-get($theme-colors, $gray-100) solid;
+
+    a {
+        text-decoration: none;
+        color: $body-color;
+    }
+    a:hover {
+        text-decoration: none;
+        color: $body-color;
+    }
+    a:visited {
+        color: $body-color;
+    }
+
+    h1 {
+        margin: 0;
+        padding: 0;
+    }
+
+    #col-signin {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .btn {
+            border-radius: 2px;
+        }
+    }
 }
 
 #main-navigation {
@@ -18,3 +53,35 @@ header{
         }
     }
 }
+
+#row-todolist {
+    .list-group {
+        border-radius: 2px;
+    }
+
+    .list-group-item {
+        -webkit-user-select: none;
+        user-select: none;
+    }
+}
+
+#list-header {
+    h2 {
+        padding: 0;
+        margin: 0;
+    }
+    #col-add {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .btn {
+            border-radius: 2px;
+        }
+    }
+}
+
+#modal-addnew .close{
+    color: $body-color;
+}
+

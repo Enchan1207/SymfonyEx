@@ -43,7 +43,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
-    # Resolve Dependencies
+    # Install Dependencies
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: |
@@ -61,9 +61,14 @@ jobs:
         cd ../
         tar -czf SymfonyEx.tgz SymfonyEx/
 
-    # Deploy
-    - name: Deploy using SFTP
+    # Transfer, decompress
+    - name: Transfer using SFTP
       run: |
         cd ../
         sftp r-techlab@r-techlab.sakura.ne.jp:/home/r-techlab/symfony <<< $'put SymfonyEx.tgz'
         ssh r-techlab@r-techlab.sakura.ne.jp "cd symfony; tar -xzf SymfonyEx.tgz"
+
+    # Deploy
+    - name: Deploy
+      run: cat deploy.sh | ssh r-techlab@r-techlab.sakura.ne.jp
+

@@ -8,7 +8,7 @@
 
 ## [Update] Configure for apache
 
- - `symfony/apache-pack`をrequire、`.htaccess` (参考: [公式](https://symfony.com/doc/current/setup/web_server_configuration.html))
+ - `symfony/apache-pack`をrequire、`.htaccess`設定 (参考: [公式](https://symfony.com/doc/current/setup/web_server_configuration.html))
  - `.env.local`作成
 
 ## [Update] add IndexController
@@ -41,3 +41,33 @@
 
  - `.github/workflows/deploy.yml`にCI/CDを記述、サーバにデプロイできるように
  - `README.md`にステータスバッジを表示
+
+## [Update] TODO-list frame
+
+ - TODOリストでも作ります?(雑ノリ) という思想のもとtwig, scssを更新
+
+## [Add] Entities
+
+ - `TaskList`,`Task`エンティティを追加
+ - マイグレーションファイル生成 (`console m:mig`, `console d:m:m`)
+
+## [Delete] controllers.json
+
+ - `controller.json`削除
+ - `webpack.config.js`の設定を(Stimulusを使用しないように)変更
+
+## [Update] TasklistController
+
+ - `TaskListController`追加
+ - scss, js変更
+ - テンプレートファイルの配置変更
+
+## [Add] create todo/todo-list command
+
+ - TODOリスト、TODO作成コマンド追加 (`console m:com`)
+
+## [Update] templates
+
+ - templateを修正
+   - リンクのhrefを`path()`により生成
+   - `todo.expires`をdateフォーマット
