@@ -65,7 +65,7 @@ jobs:
     - name: Install dependencies
       run: |
         composer update --prefer-dist --no-progress --no-suggest
-        yarn install --force
+        yarn install
 
     # Build assets
     - name: Build assets
