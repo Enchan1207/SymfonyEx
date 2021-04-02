@@ -8,7 +8,7 @@
 
 ## [Update] Configure for apache
 
- - `symfony/apache-pack`をrequire、`.htaccess` (参考: [公式](https://symfony.com/doc/current/setup/web_server_configuration.html))
+ - `symfony/apache-pack`をrequire、`.htaccess`設定 (参考: [公式](https://symfony.com/doc/current/setup/web_server_configuration.html))
  - `.env.local`作成
 
 ## [Update] add IndexController
@@ -64,7 +64,7 @@
 
 ## [Add] create todo/todo-list command
 
- - TODOリスト、TODO作成コマンド追加
+ - TODOリスト、TODO作成コマンド追加 (`console m:com`)
 
 ## [Update] templates
 
