@@ -87,5 +87,5 @@ jobs:
 
     # Deploy
     - name: Deploy
-      run: cat deploy.sh ${{ env.DEPLOY_REMOTE_PATH }} | ssh r-techlab@r-techlab.sakura.ne.jp
+      run: cat deploy.sh | ssh r-techlab@r-techlab.sakura.ne.jp "cd ${{ env.DEPLOY_REMOTE_PATH }};bash"
 

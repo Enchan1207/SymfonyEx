@@ -5,8 +5,8 @@
 alias console='php bin/console'
 
 # move to deploy destination
-cd $1
-ls
+DESTINATION="SymfonyEx"
+cd DESTINATION
 
 # clear cache
 console cache:clear
@@ -18,4 +18,5 @@ console doctrine:migrations:status
 # clear cache
 console cache:clear
 
+# finishing
 unalias console
