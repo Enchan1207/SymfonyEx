@@ -11,6 +11,9 @@ cd $DESTINATION
 # clear cache
 console cache:clear
 
+ls
+alias
+
 # migration
 console doctrine:migrations:migrate
 console doctrine:migrations:status
