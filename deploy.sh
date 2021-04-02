@@ -2,24 +2,17 @@
 # Deploy Scripts
 #
 
-alias console='php bin/console'
-
 # move to deploy destination
 DESTINATION="SymfonyEx"
 cd $DESTINATION
 
 # clear cache
-console cache:clear
-
-ls
-alias
+php bin/console cache:clear
 
 # migration
-console doctrine:migrations:migrate
-console doctrine:migrations:status
+yes | php bin/console doctrine:migrations:migrate
+php bin/console doctrine:migrations:status
 
 # clear cache
-console cache:clear
+php bin/console cache:clear
 
-# finishing
-unalias console
