@@ -42,12 +42,11 @@ jobs:
       env:
         cache-name: cache-node-modules
       with:
-        path: ~/node_modules
-        key: ${{ runner.os }}-build-${{ hashFiles('**/yarn.lock') }}
+        path: '**/node_modules'
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
+          ${{ runner.os }}-node-modules-${{ env.cache-name }}-
+          ${{ runner.os }}-node-modules-
 
     # Cache composer packages
     - name: Cache composer packages
@@ -56,18 +55,17 @@ jobs:
       env:
         cache-name: cache-composer-packages
       with:
-        path: ~/vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        path: '**/vendor'
+        key: ${{ runner.os }}-composer-packages-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
-          ${{ runner.os }}-php-${{ env.cache-name }}-
-          ${{ runner.os }}-php-
-          ${{ runner.os }}-
+          ${{ runner.os }}-composer-packages-${{ env.cache-name }}-
+          ${{ runner.os }}-composer-packages-
 
     # Install Dependencies
     - name: Install dependencies
       run: |
         composer update --prefer-dist --no-progress --no-suggest
-        yarn install
+        yarn install --force
 
     # Build assets
     - name: Build assets
@@ -84,8 +82,8 @@ jobs:
     - name: Transfer using SFTP
       run: |
         cd ../
-        echo "${env.DEPLOY_REMOTE_PATH}"
-        echo ${env.DEPLOY_REMOTE_PATH}
+        echo ${{ env.DEPLOY_REMOTE_PATH }}
+        echo "${{ env.DEPLOY_REMOTE_PATH }}"
         sftp r-techlab@r-techlab.sakura.ne.jp:/home/r-techlab/symfony <<< $'put SymfonyEx.tgz'
         ssh r-techlab@r-techlab.sakura.ne.jp "cd symfony; tar -xzf SymfonyEx.tgz"
       # env:
