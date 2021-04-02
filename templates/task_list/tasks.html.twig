@@ -15,9 +15,14 @@
 
     <div id="row-todolist" class="row my-1 px-4 py-2">
         <div class="col-12">
-            <div class="list-group">
-            {{ list }}
-            </div>
+            <ul class="list-group">
+                {% for todo in todos %}
+                <li class="list-group-item list-group-item-action">
+                    {{ todo.name }}
+                    <span class="badge badge-primary badge-pill">expires: {{ todo.expires|date("Y/m/d") }}</span>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>

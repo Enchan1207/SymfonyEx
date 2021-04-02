@@ -65,3 +65,9 @@
 ## [Add] create todo/todo-list command
 
  - TODOリスト、TODO作成コマンド追加
+
+## [Update] templates
+
+ - templateを修正
+   - リンクのhrefを`path()`により生成
+   - `todo.expires`をdateフォーマット
