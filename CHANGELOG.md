@@ -71,3 +71,9 @@
  - templateを修正
    - リンクのhrefを`path()`により生成
    - `todo.expires`をdateフォーマット
+
+## [Update] add APIPlatform
+
+ - [API Platform](https://api-platform.com/)を導入
+   - エンティティ`Task`,`TaskList`をAPIPlatformで使えるように ([src/Entity/Task.php](src/Entity/Task.php#L5-L12), [src/Entity/TaskList.php](src/Entity/TaskList.php#L5-L12))
+   - `prod`環境でAPIのドキュメンテーションを表示させないように ([config/packages/prod/api_platform.yaml](config/packages/prod/api_platform.yaml))
