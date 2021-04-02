@@ -4,6 +4,9 @@
 
 alias console='php bin/console'
 
+# move to deploy destination
+cd $1
+
 # clear cache
 console cache:clear
 
