@@ -6,7 +6,7 @@ alias console='php bin/console'
 
 # move to deploy destination
 DESTINATION="SymfonyEx"
-cd DESTINATION
+cd $DESTINATION
 
 # clear cache
 console cache:clear
