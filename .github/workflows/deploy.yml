@@ -7,11 +7,21 @@ on:
 
 jobs:
   deploy:
+    env:
+      DEPLOY_REMOTE_PATH: /home/r-techlab/symfony # デプロイ先リモートパス
     runs-on: ubuntu-latest
     steps:
 
     # Checkout repository
     - uses: actions/checkout@v2
+
+    # Install SSH key to VM
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v1
+      with:
+        private-key: ${{ secrets.SSH_KEY }}
+        name: id_rsa
+        known-hosts: ${{ secrets.KNOWN_HOSTS }}
 
     # Setup node.js 
     - uses: actions/setup-node@v2
@@ -25,34 +35,43 @@ jobs:
         php-version: '7.4'
         tools: composer:v2
 
-    # Install SSH key to VM
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v1
+    # Cache node_modules
+    - name: Cache node modules
+      id: node_modules-cache
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
       with:
-        private-key: ${{ secrets.SSH_KEY }}
-        name: id_rsa
-        known-hosts: ${{ secrets.KNOWN_HOSTS }}
+        path: ~/node_modules
+        key: ${{ runner.os }}-build-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
 
-    # Cache
-    - name: Cache Composer packages
+    # Cache composer packages
+    - name: Cache composer packages
       id: composer-cache
       uses: actions/cache@v2
+      env:
+        cache-name: cache-composer-packages
       with:
-        path: vendor
+        path: ~/vendor
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
+          ${{ runner.os }}-php-${{ env.cache-name }}-
           ${{ runner.os }}-php-
+          ${{ runner.os }}-
 
     # Install Dependencies
     - name: Install dependencies
-      if: steps.composer-cache.outputs.cache-hit != 'true'
       run: |
         composer update --prefer-dist --no-progress --no-suggest
+        yarn install
 
     # Build assets
     - name: Build assets
       run: |
-        yarn install
         yarn encore prod
     
     # Compress repository
@@ -65,6 +84,7 @@ jobs:
     - name: Transfer using SFTP
       run: |
         cd ../
+        echo "${env.DEPLOY_REMOTE_PATH}"
         sftp r-techlab@r-techlab.sakura.ne.jp:/home/r-techlab/symfony <<< $'put SymfonyEx.tgz'
         ssh r-techlab@r-techlab.sakura.ne.jp "cd symfony; tar -xzf SymfonyEx.tgz"
 
